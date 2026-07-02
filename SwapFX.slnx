@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SwapFX.API/SwapFX.API.csproj" />
+  <Project Path="SwapFX.CORE/SwapFX.CORE.csproj" />
+</Solution>
