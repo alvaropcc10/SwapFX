@@ -24,6 +24,10 @@ CREATE TABLE [dbo].[DocumentoIdentidad] ([Id] INT IDENTITY(1,1) NOT NULL PRIMARY
 GO
 CREATE TABLE [dbo].[Notificacion] ([Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY, [UsuarioId] INT NULL, [Tipo] NVARCHAR(50) NULL, [Mensaje] NVARCHAR(500) NULL, [Leida] BIT NULL, [FechaCreacion] DATETIME NULL, CONSTRAINT FK_Notificacion_Usuario FOREIGN KEY (UsuarioId) REFERENCES Usuario(Id))
 GO
+CREATE TABLE [dbo].[BitacoraTransaccion] ([Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY, [TransaccionId] INT NOT NULL, [EstadoAnterior] NVARCHAR(30) NOT NULL, [EstadoNuevo] NVARCHAR(30) NOT NULL, [UsuarioResponsableId] INT NOT NULL, [Comentario] NVARCHAR(500) NULL, [FechaCambio] DATETIME NOT NULL, CONSTRAINT FK_BitacoraTransaccion_Transaccion FOREIGN KEY (TransaccionId) REFERENCES Transaccion(Id))
+GO
+CREATE TABLE [dbo].[EvidenciaDisputa] ([Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY, [DisputaId] INT NOT NULL, [UsuarioId] INT NOT NULL, [NombreArchivo] NVARCHAR(200) NOT NULL, [RutaArchivo] NVARCHAR(500) NOT NULL, [FormatoArchivo] NVARCHAR(10) NOT NULL, [FechaSubida] DATETIME NOT NULL, CONSTRAINT FK_EvidenciaDisputa_Disputa FOREIGN KEY (DisputaId) REFERENCES Disputa(Id))
+GO
 SET IDENTITY_INSERT [dbo].[Moneda] ON
 INSERT [dbo].[Moneda] ([Id],[Codigo],[Nombre],[Simbolo],[IsActive]) VALUES (1,N'PEN',N'Sol peruano',N'S/',1)
 INSERT [dbo].[Moneda] ([Id],[Codigo],[Nombre],[Simbolo],[IsActive]) VALUES (2,N'USD',N'Dolar americano',N'$',1)

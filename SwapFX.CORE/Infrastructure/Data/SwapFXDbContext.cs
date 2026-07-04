@@ -16,6 +16,8 @@ public partial class SwapFXDbContext : DbContext
     public virtual DbSet<Disputa> Disputa { get; set; }
     public virtual DbSet<DocumentoIdentidad> DocumentoIdentidad { get; set; }
     public virtual DbSet<Notificacion> Notificacion { get; set; }
+    public virtual DbSet<BitacoraTransaccion> BitacoraTransaccion { get; set; }
+    public virtual DbSet<EvidenciaDisputa> EvidenciaDisputa { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Usuario>(entity => {
@@ -113,6 +115,20 @@ public partial class SwapFXDbContext : DbContext
             entity.Property(e => e.Mensaje).HasMaxLength(500);
             entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
             entity.HasOne(d => d.Usuario).WithMany().HasForeignKey(d => d.UsuarioId).HasConstraintName("FK_Notificacion_Usuario");
+        });
+        modelBuilder.Entity<BitacoraTransaccion>(entity => {
+            entity.Property(e => e.EstadoAnterior).HasMaxLength(30);
+            entity.Property(e => e.EstadoNuevo).HasMaxLength(30);
+            entity.Property(e => e.Comentario).HasMaxLength(500);
+            entity.Property(e => e.FechaCambio).HasColumnType("datetime");
+            entity.HasOne(d => d.Transaccion).WithMany().HasForeignKey(d => d.TransaccionId).HasConstraintName("FK_BitacoraTransaccion_Transaccion");
+        });
+        modelBuilder.Entity<EvidenciaDisputa>(entity => {
+            entity.Property(e => e.NombreArchivo).HasMaxLength(200);
+            entity.Property(e => e.RutaArchivo).HasMaxLength(500);
+            entity.Property(e => e.FormatoArchivo).HasMaxLength(10);
+            entity.Property(e => e.FechaSubida).HasColumnType("datetime");
+            entity.HasOne(d => d.Disputa).WithMany().HasForeignKey(d => d.DisputaId).HasConstraintName("FK_EvidenciaDisputa_Disputa");
         });
         OnModelCreatingPartial(modelBuilder);
     }
