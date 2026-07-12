@@ -33,3 +33,13 @@ Universidad ESAN
 ## Usuario admin
 - Email: admin@swapfx.com
 - Password: Admin2026!
+
+## Despliegue en produccion
+
+- Frontend: https://swapfx-frontend.onrender.com
+- Backend API: https://swapfx-backend.onrender.com/swagger
+- Base de datos: Supabase PostgreSQL
+
+## Integrantes
+- 24200430 - CRISOSTOMO CERVANTES, Alvaro Paul
+- 22200555 - YUEN HORNA, Javier Orlando
