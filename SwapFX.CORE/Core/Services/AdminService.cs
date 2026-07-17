@@ -26,6 +26,15 @@ public class AdminService : IAdminService
         return RespuestaApi<bool>.Ok(true, dto.IsActive ? "Usuario habilitado." : "Usuario bloqueado.");
     }
 
+    public async Task<RespuestaApi<bool>> ValidarIdentidadAsync(int usuarioId)
+    {
+        var u = await _admin.GetUsuarioByIdAsync(usuarioId);
+        if (u == null) return RespuestaApi<bool>.Error("Usuario no encontrado.");
+        u.IdentidadValidada = true;
+        await _admin.UpdateUsuarioAsync(u);
+        return RespuestaApi<bool>.Ok(true, "Identidad validada.");
+    }
+
     public async Task<RespuestaApi<IEnumerable<TransaccionListDTO>>> ListarTodasTransaccionesAsync()
     {
         var lista = await _admin.GetAllTransaccionesAsync();

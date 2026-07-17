@@ -22,6 +22,7 @@ public class UsuarioService : IUsuarioService
             Apellidos = usuario.Apellidos,
             Email = usuario.Email,
             Tipo = usuario.Tipo,
+            IdentidadValidada = usuario.IdentidadValidada,
             Token = token
         };
     }

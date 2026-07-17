@@ -5,5 +5,6 @@ public interface IAdminService
 {
     Task<RespuestaApi<IEnumerable<UsuarioAdminListDTO>>> ListarUsuariosAsync();
     Task<RespuestaApi<bool>> CambiarEstadoUsuarioAsync(CambiarEstadoUsuarioDTO dto);
+    Task<RespuestaApi<bool>> ValidarIdentidadAsync(int usuarioId);
     Task<RespuestaApi<IEnumerable<TransaccionListDTO>>> ListarTodasTransaccionesAsync();
 }

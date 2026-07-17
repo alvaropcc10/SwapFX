@@ -16,3 +16,7 @@ public class CambiarEstadoUsuarioDTO
     public bool IsActive { get; set; }
     public string? Motivo { get; set; }
 }
+public class ValidarIdentidadDTO
+{
+    public int UsuarioId { get; set; }
+}

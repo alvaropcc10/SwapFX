@@ -29,6 +29,8 @@ builder.Services.AddScoped<ICuentaBancariaRepository, CuentaBancariaRepository>(
 builder.Services.AddScoped<ICuentaBancariaService, CuentaBancariaService>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IDocumentoIdentidadRepository, DocumentoIdentidadRepository>();
+builder.Services.AddScoped<IDocumentoIdentidadService, DocumentoIdentidadService>();
 builder.Services.AddSharedInfrastructure(config);
 builder.Services.AddControllers();
 builder.Services.AddCors(options => {

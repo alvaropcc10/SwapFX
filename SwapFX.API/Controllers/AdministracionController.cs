@@ -27,6 +27,13 @@ public class AdministracionController : ControllerBase
         return result.Exito ? Ok(result) : BadRequest(result);
     }
 
+    [HttpPut("usuarios/validar-identidad")]
+    public async Task<IActionResult> ValidarIdentidad([FromBody] ValidarIdentidadDTO dto)
+    {
+        var result = await _admin.ValidarIdentidadAsync(dto.UsuarioId);
+        return result.Exito ? Ok(result) : BadRequest(result);
+    }
+
     [HttpGet("transacciones")]
     public async Task<IActionResult> ListarTransacciones()
     {
