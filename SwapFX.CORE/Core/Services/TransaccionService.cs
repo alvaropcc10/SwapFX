@@ -84,7 +84,7 @@ public class TransaccionService : ITransaccionService
             RutaArchivo = dto.RutaArchivo,
             FormatoArchivo = dto.FormatoArchivo,
             NumeroOperacion = dto.NumeroOperacion,
-            FechaTransferencia = dto.FechaTransferencia,
+            FechaTransferencia = DateTime.SpecifyKind(dto.FechaTransferencia, DateTimeKind.Utc),
             FechaSubida = DateTime.UtcNow
         });
 
